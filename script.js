@@ -50,6 +50,17 @@ for (let i of ok) {
     paragraph.innerHTML = ""
   })
 
+  let chunk = ""
+  let prevChunk = ""
+  let contu = []
+  let edtd = []
+  let current = ""
+  let ab;
+  let bc;
+  let ba;
+  let indx = 0
+  let oox = ""
+
   function animate() {
     requestAnimationFrame(animate)
     if (!stop) {
@@ -57,8 +68,27 @@ for (let i of ok) {
       if (count >= countSpeed) {
         if (pArray[i].value != "undefined") {
         pArray[i] = "<mark> " + pArray[i] + " </mark> "
-        paragraph.innerHTML += pArray[i];
-        audio.play()
+        chunk += pArray[i];
+        if (i % 5 == 0) {
+          contu.push(chunk)
+          if (contu.length > 1) {
+            current = contu[indx - 1];
+            ab = current.replace(/<\s*mark\s*> /g, "");
+            ba = ab.replace(/ <\s*\/\s*mark\s*>/g, "");
+            bc = ba.replace(",", "")
+            contu[indx-1] = bc
+            oox = ""
+            for (let i of contu) {
+              oox += i
+            }
+            console.log(contu)
+            paragraph.innerHTML = oox
+          }
+          prevChunk = chunk
+          chunk = ""
+          audio.play()
+          indx++
+        }
         }
   
         
