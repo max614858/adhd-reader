@@ -35,7 +35,7 @@ for (let i of ok) {
 
   })
 
-  let countSpeed = 20;
+  let countSpeed = 40;
   let copyPara;
   let temp = []
   let a;
@@ -48,6 +48,7 @@ for (let i of ok) {
     pArray = whole
     i = 0
     paragraph.innerHTML = ""
+    chunk = ""
   })
 
   let chunk = ""
@@ -69,7 +70,7 @@ for (let i of ok) {
         if (pArray[i].value != "undefined") {
         pArray[i] = "<mark> " + pArray[i] + " </mark> "
         chunk += pArray[i];
-        if (i % 5 == 0) {
+        if (i % 8 == 0) {
           contu.push(chunk)
           if (contu.length > 1) {
             current = contu[indx - 1];
@@ -90,11 +91,6 @@ for (let i of ok) {
           indx++
         }
         }
-  
-        
-        
-
-
         i++
         count = 0
       }
